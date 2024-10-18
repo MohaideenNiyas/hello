@@ -10,11 +10,11 @@
     <h1>Equity Analysis</h1>
     <form id="stockForm">
         <label for="ticker">Enter Stock Ticker:</label>
-        <input type="text" id="ticker" name="ticker">
+        <input type="text" id="ticker" name="ticker" required>
         <button type="submit">Get Data</button>
     </form>
 
-    <div id="results">
+    <div id="results" style="display: none;">
         <h2>Results:</h2>
         <h3>RSI</h3>
         <img id="rsi_plot" alt="RSI Plot" />
@@ -29,16 +29,38 @@
         <img id="pb_plot" alt="P/B Plot" />
     </div>
 
+    <div id="error" style="color: red; display: none;"></div>
+
     <script>
         $('#stockForm').on('submit', function(event) {
             event.preventDefault();
             const ticker = $('#ticker').val();
-            
-            $.post('/get_stock_data', { ticker: ticker }, function(data) {
-                $('#rsi_plot').attr('src', 'data:image/png;base64,' + data.rsi_plot);
-                $('#beta_plot').attr('src', 'data:image/png;base64,' + data.beta_plot);
-                $('#pe_plot').attr('src', 'data:image/png;base64,' + data.pe_plot);
-                $('#pb_plot').attr('src', 'data:image/png;base64,' + data.pb_plot);
+
+            // Clear previous results and error messages
+            $('#results').hide();
+            $('#error').hide();
+
+            // Send AJAX request as JSON
+            $.ajax({
+                type: 'POST',
+                url: '/get_stock_data',
+                contentType: 'application/json',
+                data: JSON.stringify({ ticker: ticker }),  // Send as JSON
+                success: function(data) {
+                    // Check if data contains the expected plots
+                    if (data.rsi_plot && data.beta_plot && data.pe_plot && data.pb_plot) {
+                        $('#rsi_plot').attr('src', 'data:image/png;base64,' + data.rsi_plot);
+                        $('#beta_plot').attr('src', 'data:image/png;base64,' + data.beta_plot);
+                        $('#pe_plot').attr('src', 'data:image/png;base64,' + data.pe_plot);
+                        $('#pb_plot').attr('src', 'data:image/png;base64,' + data.pb_plot);
+                        $('#results').show();
+                    } else {
+                        $('#error').text('Invalid data received from server. Please check the stock ticker and try again.').show();
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    $('#error').text('Error fetching stock data: ' + errorThrown).show();
+                }
             });
         });
     </script>

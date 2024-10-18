@@ -1,0 +1,95 @@
+/* Styling for the entire dashboard */
+.dashboard {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Form styling */
+.form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Input styling */
+.input {
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+/* Dropdown styling */
+select.input {
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da; /* Light border color */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    cursor: pointer; /* Pointer on hover */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+/* Dropdown focus styling */
+select.input:focus {
+    border-color: #80bdff; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light blue shadow */
+}
+
+/* Button styling */
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #28a745; /* Green button color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Button hover effect */
+.button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Main container for charts */
+.charts-container {
+    margin-top: 20px;
+    max-width: 80%; /* Set a max-width for the charts container */
+    margin-left: auto; /* Center the container */
+    margin-right: auto; /* Center the container */
+}
+
+/* Charts row container */
+.charts-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three charts in a row */
+    gap: 20px; /* Space between charts */
+    max-width: 80%; /* Set a max-width for the charts row to make it smaller */
+    margin-left: auto; /* Center the charts row */
+    margin-right: auto; /* Center the charts row */
+}
+
+/* Chart card styling */
+.chart-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styling for charts */
+.chart-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* RSI chart specific styling to make it larger */
+.rsi-chart {
+    margin-bottom: 20px; /* Add space below the RSI chart */
+}
