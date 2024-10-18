@@ -7,10 +7,30 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here, such as verifying username and password
-    navigate('/dashboard'); // Redirect to dashboard upon successful login
+    const response = await fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (response.ok) {
+      // Redirect to dashboard upon successful login
+      navigate('/dashboard');
+    } else {
+      // Handle specific error messages based on the status code
+      const errorData = await response.json();
+      if (response.status === 404) {
+        alert('No user exists. Please register.');
+      } else if (response.status === 401) {
+        alert('Incorrect password. Please try again.');
+      } else {
+        alert(`An error occurred: ${errorData.error || 'Unknown error'}`);
+      }
+    }
   };
 
   return (

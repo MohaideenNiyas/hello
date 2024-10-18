@@ -1,103 +1,102 @@
 /* Center the registration form */
 .register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4; /* Light background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4; /* Light background */
 }
 
 .register-form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    position: relative;
-    
+  background-color: white;
+  padding: 40px; /* Increased padding for a more spacious look */
+  border-radius: 10px; /* Slightly increased border radius for softer corners */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  width: 400px;
+  position: relative;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 25px; /* Reduced margin for better alignment */
+  color: #333; /* Darker color for better readability */
 }
 
 /* Container for each form field */
 .form-group {
-    position: relative;
-    margin-bottom: 25px;
-    margin-right: 10px;
+  position: relative;
+  margin-bottom: 25px;
 }
 
 .form-group label {
-    position: absolute;
-    top: 50%; /* Initial position of the label */
-    left: 10px;
-    transform: translateY(-50%);
-    color: #999;
-    font-size: 16px;
-    transition: 0.2s;
-    pointer-events: none; /* Disable pointer events so the label doesn't interfere with clicking the input */
-    background-color: white; /* Match the label background to form background */
-    padding: 0 5px; /* Add padding around the label */
+  display: block; /* Make the label block-level */
+  color: #333; /* Darker color for better readability */
+  margin-bottom: 5px; /* Space between label and input */
 }
 
 /* Input fields styling */
 .form-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc; /* Default border */
-    border-radius: 5px;
-    outline: none;
-    margin-top: 5px; /* Add gap between label and input field */
-    margin-bottom: 5px;
+  width: 100%;
+  padding: 12px; /* Increased padding for a better touch target */
+  font-size: 16px;
+  border: 1px solid #ccc; /* Default border */
+  border-radius: 5px;
+  outline: none;
 }
 
-/* Change the top border to transparent when focused, and set the bottom border to blue */
+/* Change the top border to transparent when focused */
 .form-group input:focus {
-    border-top-color: transparent; /* Make the top border invisible on focus */
-    border-color: #007BFF; /* Change other borders to blue on focus */
+  border-color: #007BFF; /* Change border to blue on focus */
 }
 
-/* Move the label up when the input is focused or has a value */
-.form-group input:focus ~ label,
-.form-group input:not(:placeholder-shown) ~ label {
-    top: -10px; /* Move label up */
-    left: 10px;
-    font-size: 12px;
-    color: #333;
-    background-color: white; /* Maintain label background */
+/* Checkbox group styling */
+.checkbox-group {
+  margin-top: 10px; /* Space above the checkbox group */
+}
+
+.checkbox-group label {
+  display: flex; /* Use flex to align checkbox and text */
+  align-items: center; /* Center checkbox and text vertically */
+  font-size: 14px; /* Font size for checkbox labels */
+  margin-bottom: 10px; /* Space between checkbox labels */
+  cursor: pointer; /* Pointer cursor for better UX */
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 8px; /* Space between checkbox and label */
 }
 
 /* Button styling */
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745; /* Green color for button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
+  width: 100%;
+  padding: 12px; /* Increased padding for better usability */
+  background-color: #28a745; /* Green color for button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 button:hover {
-    background-color: #218838; /* Darker green on hover */
+  background-color: #218838; /* Darker green on hover */
 }
 
 /* Registration link styling */
 p {
-    text-align: center;
-    margin-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 p a {
-    color: #007BFF; /* Blue color for link */
-    text-decoration: none;
+  color: #007BFF; /* Blue color for link */
+  text-decoration: none;
+  transition: color 0.3s; /* Smooth transition for hover effect */
 }
 
 p a:hover {
-    text-decoration: underline;
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline;
 }
