@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
+
 import '../CSS/Dashboard.css'; // Import the CSS file
 
 const Dashboard = () => {
@@ -12,19 +13,20 @@ const Dashboard = () => {
 
   const [ticker, setTicker] = useState('AAPL'); // Default ticker is AAPL
 
-  const fetchStockData = async () => {
+  // Using useCallback to memoize fetchStockData
+  const fetchStockData = useCallback(async () => {
     try {
       const response = await axios.post('http://127.0.0.1:5000/get_stock_data', { ticker });
       setCharts(response.data);
     } catch (error) {
       console.error('Error fetching stock data:', error);
     }
-  };
+  }, [ticker]); // Include ticker as a dependency
 
   // Fetch stock data when the component is first rendered
   useEffect(() => {
     fetchStockData();
-  }, []);
+  }, [fetchStockData]); // Safe to include fetchStockData here
 
   // Handle form submission
   const handleSubmit = (event) => {
