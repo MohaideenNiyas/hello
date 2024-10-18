@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+    <title>Custom Multi-Select Dropdown</title>
+</head>
+<body>
+    <div class="dashboard">
+        <h2>Custom Multi-Select Dropdown</h2>
+
+        <div class="dropdown">
+            <button class="dropbtn">Select Ticker Symbols</button>
+            <div class="dropdown-content">
+                <label>
+                    <input type="checkbox" value="AAPL"> AAPL
+                </label>
+                <label>
+                    <input type="checkbox" value="MSFT"> MSFT
+                </label>
+                <label>
+                    <input type="checkbox" value="AMZN"> AMZN
+                </label>
+                <label>
+                    <input type="checkbox" value="TSLA"> TSLA
+                </label>
+                <label>
+                    <input type="checkbox" value="GOOGL"> GOOGL
+                </label>
+                <label>
+                    <input type="checkbox" value="GOOG"> GOOG
+                </label>
+                <label>
+                    <input type="checkbox" value="META"> META
+                </label>
+                <label>
+                    <input type="checkbox" value="NVDA"> NVDA
+                </label>
+                <label>
+                    <input type="checkbox" value="BRK-A"> BRK-A
+                </label>
+                <label>
+                    <input type="checkbox" value="BRK-B"> BRK-B
+                </label>
+                <!-- Add more options as needed -->
+            </div>
+        </div>
+
+        <div id="selected-values">
+            <h3>Selected Ticker Symbols:</h3>
+            <ul id="selected-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Get all checkboxes inside the dropdown
+        const checkboxes = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
+        const selectedList = document.getElementById('selected-list');
+
+        // Function to update the selected list display
+        function updateSelectedList() {
+            // Clear the current list
+            selectedList.innerHTML = '';
+
+            // Loop through checkboxes and display selected values
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = checkbox.value;
+                    selectedList.appendChild(listItem);
+                }
+            });
+        }
+
+        // Add event listeners to checkboxes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSelectedList);
+        });
+    </script>
+</body>
+</html>
