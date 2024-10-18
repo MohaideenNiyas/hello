@@ -1,0 +1,102 @@
+/* Center the login form */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Light background */
+}
+
+.login-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    position: relative;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Container for each form field */
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+    
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%; /* Initial position of the label */
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 16px;
+    transition: 0.2s;
+    pointer-events: none; /* Disable pointer events so the label doesn't interfere with clicking the input */
+    background-color: white; /* Match the label background to form background */
+    padding: 0 5px; /* Add some padding around the label */
+}
+
+/* Input fields styling */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Default border */
+    border-radius: 5px;
+    outline: none;
+    margin-top: 5px; /* Add gap between label and input field */
+}
+
+/* Change the top border to transparent when focused, and set the bottom border to blue */
+.form-group input:focus {
+    border-top-color: transparent; /* Make the top border invisible on focus */
+    border-color: #007BFF; /* Change other borders to blue on focus */
+}
+
+/* Move the label up when the input is focused or has a value */
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label {
+    top: -10px; /* Move label up */
+    left: 10px;
+    font-size: 12px;
+    color: #333;
+    background-color: transparent; /* Make the background behind the label transparent */
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Registration link styling */
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+p a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

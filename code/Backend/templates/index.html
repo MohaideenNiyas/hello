@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equity Analysis</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Equity Analysis</h1>
+    <form id="stockForm">
+        <label for="ticker">Enter Stock Ticker:</label>
+        <input type="text" id="ticker" name="ticker">
+        <button type="submit">Get Data</button>
+    </form>
+
+    <div id="results">
+        <h2>Results:</h2>
+        <h3>RSI</h3>
+        <img id="rsi_plot" alt="RSI Plot" />
+
+        <h3>Beta</h3>
+        <img id="beta_plot" alt="Beta Plot" />
+
+        <h3>P/E Ratios</h3>
+        <img id="pe_plot" alt="P/E Plot" />
+
+        <h3>P/B Ratio</h3>
+        <img id="pb_plot" alt="P/B Plot" />
+    </div>
+
+    <script>
+        $('#stockForm').on('submit', function(event) {
+            event.preventDefault();
+            const ticker = $('#ticker').val();
+            
+            $.post('/get_stock_data', { ticker: ticker }, function(data) {
+                $('#rsi_plot').attr('src', 'data:image/png;base64,' + data.rsi_plot);
+                $('#beta_plot').attr('src', 'data:image/png;base64,' + data.beta_plot);
+                $('#pe_plot').attr('src', 'data:image/png;base64,' + data.pe_plot);
+                $('#pb_plot').attr('src', 'data:image/png;base64,' + data.pb_plot);
+            });
+        });
+    </script>
+</body>
+</html>
